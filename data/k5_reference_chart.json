@@ -1,0 +1,53 @@
+{
+  "_WARNING": "ALL LAB VALUES, LEVELS AND RISK ASSIGNMENTS BELOW ARE PLACEHOLDERS FOR TESTING. Replace them with values measured through strip_reader on strips dipped in known standards, and have the risk thresholds confirmed against WHO / Zambian drinking-water standards by a qualified person.",
+  "layout": {
+    "pad_order": ["nitrate", "ph", "bacteria"],
+    "reference_patch": "top"
+  },
+  "pads": {
+    "nitrate": {
+      "label": "Nitrate",
+      "unit": "mg/L NO3",
+      "advice": {
+        "risky": "advice_nitrate_risky",
+        "unsafe": "advice_nitrate_unsafe"
+      },
+      "swatches": [
+        {"label": "0",   "lab": [94,  2,  4], "risk": "safe"},
+        {"label": "10",  "lab": [88, 14,  2], "risk": "safe"},
+        {"label": "25",  "lab": [80, 28, -2], "risk": "safe"},
+        {"label": "50",  "lab": [70, 42, -6], "risk": "risky"},
+        {"label": "100", "lab": [60, 55, -8], "risk": "unsafe"},
+        {"label": "250", "lab": [48, 62, -4], "risk": "unsafe"}
+      ]
+    },
+    "ph": {
+      "label": "pH",
+      "unit": "",
+      "advice": {
+        "risky": "advice_ph_risky"
+      },
+      "swatches": [
+        {"label": "6.0", "lab": [78,  22, 60], "risk": "risky"},
+        {"label": "6.5", "lab": [84,   8, 62], "risk": "safe"},
+        {"label": "7.0", "lab": [78, -10, 52], "risk": "safe"},
+        {"label": "7.5", "lab": [70, -28, 40], "risk": "safe"},
+        {"label": "8.0", "lab": [66, -30, 22], "risk": "safe"},
+        {"label": "8.5", "lab": [60, -30,  5], "risk": "safe"},
+        {"label": "9.0", "lab": [50, -10, -25], "risk": "risky"}
+      ]
+    },
+    "bacteria": {
+      "label": "Bacterial indicator",
+      "unit": "",
+      "max_match_de": 20.0,
+      "advice": {
+        "unsafe": "advice_bacteria_unsafe"
+      },
+      "swatches": [
+        {"label": "absent",  "lab": [92, -2,  8], "risk": "safe"},
+        {"label": "present", "lab": [45,  5,  3], "risk": "unsafe"}
+      ]
+    }
+  }
+}
