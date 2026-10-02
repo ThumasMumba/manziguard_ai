@@ -2,6 +2,7 @@ from flask import Flask
 from app.blueprints.auth import auth_bp
 from app.models import User
 from app.extension import db, login_manager, limiter, csrf, babel
+from app.services.analysis import init_analysis, analysis_bp
 
 
 def create_app():
@@ -12,12 +13,13 @@ def create_app():
         "mysql+pymysql://root:@localhost/manziguard_ai_db"
     )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    
+    app.config["ALLOW_PLACEHOLDER_CHART"] = True
     # Initialize extensions/ Connects extensions to the Flask app instance
     db.init_app(app)
     login_manager.init_app(app)
     limiter.init_app(app)
     csrf.init_app(app)
+    csrf.exempt(analysis_bp)
     babel.init_app(app)
     
     # Register blueprints
@@ -27,7 +29,9 @@ def create_app():
 
    
     app.register_blueprint(auth_bp)
-
+    app.register_blueprint(analysis_bp)
+    init_analysis(app)  # Initialize analysis service with the app
+    
     with app.app_context():
         db.create_all()
 

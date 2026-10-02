@@ -17,7 +17,6 @@ def database_url() -> str:
 class Config:
     # Flask session signing key - MUST be overridden in production
     SECRET_KEY = os.environ.get("SECRET_KEY")
-    
     # ------MySLQ connection ------------------------------------------------#
     DB_USER = os.environ.get("DB_USER", "root")
     DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
