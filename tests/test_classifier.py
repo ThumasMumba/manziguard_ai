@@ -140,7 +140,9 @@ def test_missing_pad_reading_raises():
     assert exc.value.code == "missing_pad"
 
 
+
 # --- chart validation --------------------------------------------------------
+
 def _raw():
     return json.loads(CHART_PATH.read_text(encoding="utf-8"))
 
